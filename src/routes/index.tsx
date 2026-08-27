@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 const TITLE = "Bee Home Creators | Residential Plots in Trichy";
 const DESCRIPTION =
@@ -16,11 +17,20 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "stylesheet", href: "/assets/index-Byz_ySLO.css" }],
-    scripts: [{ src: "/assets/index-C_2_1hmy.js", type: "module" }],
   }),
   component: Index,
 });
 
 function Index() {
-  return <div id="root" />;
+  // The site bundle mounts itself into #root, so it must load after hydration.
+  useEffect(() => {
+    if (document.querySelector("script[data-bee-site]")) return;
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src = "/assets/index-C_2_1hmy.js";
+    script.dataset.beeSite = "true";
+    document.body.appendChild(script);
+  }, []);
+
+  return <div id="root" suppressHydrationWarning />;
 }
