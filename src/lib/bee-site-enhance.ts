@@ -72,6 +72,9 @@ function enhanceImages(root: ParentNode) {
 function enhancePhones(root: ParentNode) {
   root.querySelectorAll<HTMLAnchorElement>('#root a[href^="tel:"]').forEach((link) => {
     if (link.dataset["beeWhatsapp"]) return;
+    // Header and footer already ship their own WhatsApp action.
+    const scope = link.closest(".team-card, .team-info, header, .footer");
+    if (scope && (scope.tagName === "HEADER" || scope.classList.contains("footer"))) return;
     link.dataset["beeWhatsapp"] = "true";
 
     const digits = (link.getAttribute("href") || "").replace(/[^\d]/g, "");
@@ -91,7 +94,7 @@ function enhancePhones(root: ParentNode) {
     const parent = link.parentElement;
     if (!parent) return;
     if (parent.querySelector(".bee-whatsapp-link")) return;
-    if (link.classList.contains("team-phone")) {
+    if (true) {
       const group = document.createElement("div");
       group.className = "bee-contact-actions";
       parent.insertBefore(group, link);
