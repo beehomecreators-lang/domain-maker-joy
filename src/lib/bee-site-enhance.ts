@@ -94,15 +94,11 @@ function enhancePhones(root: ParentNode) {
     const parent = link.parentElement;
     if (!parent) return;
     if (parent.querySelector(".bee-whatsapp-link")) return;
-    if (true) {
-      const group = document.createElement("div");
-      group.className = "bee-contact-actions";
-      parent.insertBefore(group, link);
-      group.appendChild(link);
-      group.appendChild(wa);
-    } else {
-      link.insertAdjacentElement("afterend", wa);
-    }
+    const group = document.createElement("div");
+    group.className = "bee-contact-actions";
+    parent.insertBefore(group, link);
+    group.appendChild(link);
+    group.appendChild(wa);
   });
 }
 
