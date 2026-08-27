@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { enhanceBeeSite } from "@/lib/bee-site-enhance";
 
 const TITLE = "Bee Home Creators | Residential Plots in Trichy";
 const DESCRIPTION =
@@ -14,18 +15,23 @@ export const beeSiteHead = () => ({
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ],
-  links: [{ rel: "stylesheet", href: "/assets/index-Byz_ySLO.css" }],
+  links: [
+    { rel: "stylesheet", href: "/assets/index-Byz_ySLO.css" },
+    { rel: "stylesheet", href: "/assets/bee-enhancements.css" },
+  ],
 });
 
 export function BeeSite() {
   // The site bundle mounts itself into #root, so it must load after hydration.
   useEffect(() => {
-    if (document.querySelector("script[data-bee-site]")) return;
-    const script = document.createElement("script");
-    script.type = "module";
-    script.src = "/assets/index-C_2_1hmy.js";
-    script.setAttribute("data-bee-site", "true");
-    document.body.appendChild(script);
+    if (!document.querySelector("script[data-bee-site]")) {
+      const script = document.createElement("script");
+      script.type = "module";
+      script.src = "/assets/index-C_2_1hmy.js";
+      script.setAttribute("data-bee-site", "true");
+      document.body.appendChild(script);
+    }
+    return enhanceBeeSite();
   }, []);
 
   return <div id="root" suppressHydrationWarning />;
