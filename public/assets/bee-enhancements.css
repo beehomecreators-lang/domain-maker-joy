@@ -1,0 +1,99 @@
+/* Enhancements layered over the Bee Home Creators site bundle */
+
+#root img.bee-zoomable {
+  cursor: zoom-in;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+#root img.bee-zoomable:hover,
+#root img.bee-zoomable:focus-visible {
+  transform: scale(1.02);
+  filter: brightness(1.04);
+  outline: none;
+}
+
+.bee-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(12, 30, 24, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+.bee-lightbox.is-open {
+  display: flex;
+}
+
+.bee-lightbox__img {
+  max-width: 94vw;
+  max-height: 90vh;
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  object-fit: contain;
+}
+
+.bee-lightbox__close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: #173c31;
+  background: #f3d27a;
+}
+
+.bee-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.bee-whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0f5132;
+  background: rgba(37, 211, 102, 0.16);
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.bee-whatsapp-link:hover {
+  background: #25d366;
+  color: #08281b;
+}
+
+.footer .bee-whatsapp-link {
+  color: #eaf4ee;
+  border-color: rgba(234, 244, 238, 0.35);
+}
+
+.bee-compliance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 18px 16px 26px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: #f3d27a;
+}
